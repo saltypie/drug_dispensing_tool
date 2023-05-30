@@ -26,6 +26,7 @@
                         <label>Address: </label><input type="text" name="address"><br>    -->
                         <button type="submit" name="submit" class="btn btn-primary">Submit</button>         
                     </form>
+
                 </div>            
             </div>
         </div>
