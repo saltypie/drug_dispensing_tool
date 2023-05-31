@@ -1,29 +1,28 @@
 <?php
 require("connection.php");
 
-    function insertion(array $vals) {
+    function insertion(array $input) {
         global $conn;
-        if (!empty($vals['name'])&&!empty($vals['phone'])&&!empty($vals['age'])&&!empty($vals['ssn'])) {
-            $name=$vals['name'];
-            $phone=$vals['phone'];
-            $age=$vals['age'];
-            $ssn=$vals['ssn'];
-            $columns=$vals['columns'];
-            $tablename=$vals['tablename'];
-            $vals="'$ssn','$name','$phone','$age'";
-            $query="INSERT INTO ". $tablename."(".$columns.") VALUES(".$vals.")";
+            $columns=$input['columns'];
+            $tablename=$input['tablename'];
+            $values="";
+            foreach($input as $key=>$value){
+                if($key!='tablename'and$key!='columns'and$key!='submit'){
+                    echo "\n KEY ".$key."KEY \n";
+                    $values=$values."'$value',";
+                }
+            } 
+            $values=substr($values, 0, -1);
+            echo "Values--".$values."--values";           
+            $query="INSERT INTO ". $tablename."(".$columns.") VALUES(".$values.")";
             echo "\n".$query;
             $run=mysqli_query($conn,$query)or die(mysqli_error($conn));
             if ($run) {
                 echo "<h1>WELCOME!</h1>";
-                print_r($vals);
+                print_r($input);
             }else {
                 echo "unsuccessful";
             }
-        }else {
-            echo "all fields required";
-        }        
-
         return;
     }
     
