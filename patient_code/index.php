@@ -3,12 +3,12 @@
     <head>
         <title>Signup Patient</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="CSS/styles.css">
+        <link rel="stylesheet" href="../CSS/styles.css">
 
     </head>
     <body>
         <div class="container d-flex justify-content-center align-items-center" style="padding: 0%;margin:0%;">
-            <img src="images/thelogo.png" alt="Logo" class="the-logo">
+            <img src="../images/logo-final.png" alt="Logo" class="the-logo">
             <div class="card hover-card shadowbox">
                 <div class="card-body shadowbox-body">
                     <h4>SIGNUP PATIENT</h4>
