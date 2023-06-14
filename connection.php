@@ -1,9 +1,9 @@
 <?php
 $userName="root";
-$password="";
-$dbName ='testdb';
+$Password="";
+$dbName ='drug_dispensing_tool';
 
-$conn=new mysqli('localhost',$userName,$password,$dbName);
+$conn=new mysqli('localhost',$userName,$Password,$dbName);
 if($conn->connect_error){
     die("Connection Failed");
 }else{
