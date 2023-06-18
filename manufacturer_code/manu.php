@@ -8,9 +8,9 @@
     <body>
         <form action="" method="post"><!--Link index to the login page post-->
             <h2>LOGIN</h2>
-            <?php if(isset($_GET['error'])): ?>
+            <?php if(isset($_GET['error'])){ ?>
                     <p class="error"><?php echo $_GET['error'];?></p>
-            <?php endif ; ?><!--previous 3 lines syntax revise them-->
+            <?php } ?><!--previous 3 lines syntax revise them-->
             <label>Company Name</label>
             <input type="text" name="Email" placeholder="Email" required><br>
             <label>Password</label>
@@ -25,21 +25,21 @@ include "../connection.php";
 
 if(isset($_POST['Email'])&&isset($_POST['Email'])){
     $Email =$_POST['Email'];
-    $Password=$_POST['Password'];
+    $pass =$_POST['Password'];
     if(empty($Email)){
         echo("Email is required");
         exit();
-    }else if(empty($Password)){
+    }else if(empty($pass)){
         echo("Password is required");
         exit();
     }
     
-    $sql = "SELECT * FROM Pharmaceutical_Company WHERE `Email`='$Email' AND Password='$Password'";
+    $sql = "SELECT * FROM Pharmaceutical_Company WHERE `Email`='$Email' AND Password='$pass'";
     $result=mysqli_query($conn,$sql);
     if(mysqli_num_rows($result)===1){
         $row=mysqli_fetch_assoc($result);
-         //$sql = "SELECT * FROM users WHERE user_name='$uname' AND Password='$pass'";
-        if($row['Email']===$Email &&$row['Password']===$Password){
+        $sql = "SELECT * FROM users WHERE user_name='$uname' AND Password='$pass'";
+        if($row['user_name']===$uname &&$row['Password']===$pass){
             echo "Logged in";
             $_SESSION['Email']=$row['Email'];
             $_SESSION['Name']=$row['CompanyName'];

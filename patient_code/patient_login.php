@@ -25,7 +25,7 @@ include "../connection.php";
 
 if(isset($_POST['Email'])&&isset($_POST['Email'])){
     $Email =$_POST['Email'];
-    $pass =$_POST['Password'];
+    $Password=$_POST['Password'];
     if(empty($Email)){
         echo("Email is required");
         exit();
