@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/styles.css">
     <title>Profile Details</title>
     <style>
         table {
@@ -40,6 +41,9 @@
 </head>
 <body>
     <h1>Your Profile</h1><br>
+    <div class="name-header">
+        <h4><?php echo("Name: ".$_SESSION["Name"]);?></h4>
+    </div>
     <table>
         <tr>
             <td> CompanyName </td>
@@ -51,7 +55,7 @@
 
             <?php
                 require_once("../connection.php");
-                $Name=$_SESSION["CompanyName"];
+                $Name=$_SESSION["Name"];
                 $slctn="SELECT * FROM pharmaceuticalcompany WHERE CompanyName='$Name'";
                 $result=$conn->query($slctn);
                 $result_array=$result->fetch_assoc();

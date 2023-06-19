@@ -16,11 +16,13 @@
                     <h4>Signup Doctor</h4>
                     <form action="" method="post"><!--Empty action will call the same file-->
                         <label>DoctorID:</label><input type="text" name="DoctorID"><br>
+                        <label>DoctorName:</label><input type="text" name="DoctorName"><br>
+                        <label>Hospital:</label><input type="text" name="Hospital"><br>
                         <label>Phone: </label><input type="text" name="Phone"><br>
                         <label>Email:</label><input type="email" name="Email"><br>
                         <label>Password: </label><input type="password" name="Password"><br>
                         <input type="text" name="tablename" value="Doctor" style="display: none;"><!--Which Table Are we inserting to-->
-                        <input type="text" name="columns" value="DoctorID,Phone,Email,Password"style="display: none;"><!--A way of specifying the table columns corresponding to this form-->
+                        <input type="text" name="columns" value="DoctorSSN,DoctorName,Hospital,Phone,Email,Password"style="display: none;"><!--A way of specifying the table columns corresponding to this form-->
                         <button type="submit" name="submit" class="btn btn-primary">Submit</button> 
 </form>
 </div>
@@ -36,9 +38,11 @@ require("../insertions.php");
 if (isset($_POST['submit'])) {
         insertion($_POST);
         session_start();
-        $_SESSION["DoctorID"]=$_POST["DoctorID"];
+        $_SESSION["DoctorSSN"]=$_POST["DoctorSSN"];
+        $_SESSION["Name"]=$_POST["DoctorName"];
         $_SESSION["loggedin"]=true;
         $_SESSION["role"]="Doctor";
+
         header("Location: prescribe.php");
         
 }else{

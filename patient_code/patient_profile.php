@@ -57,7 +57,7 @@
 
             <?php
                 require_once("../connection.php");
-                $pName=$_SESSION["PatientName"];
+                $pName=$_SESSION["Name"];
                 $slctn="SELECT * FROM patient WHERE PatientName='$pName'";
                 $result=$conn->query($slctn);
                 $result_array=$result->fetch_assoc();

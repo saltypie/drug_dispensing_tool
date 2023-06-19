@@ -39,3 +39,9 @@
     margin: 0%;
     top: 10% relative;
   }
+  .name-header{
+    position: fixed;
+    top: 0%;
+    right:5%;
+    border: solid red 0px;
+  }

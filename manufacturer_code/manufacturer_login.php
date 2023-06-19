@@ -34,18 +34,19 @@ if(isset($_POST['Email'])&&isset($_POST['Email'])){
         exit();
     }
     
-    $sql = "SELECT * FROM Pharmaceutical_Company WHERE `Email`='$Email' AND Password='$Password'";
+    $sql = "SELECT * FROM PharmaceuticalCompany WHERE `Email`='$Email' AND Password='$Password'";
     $result=mysqli_query($conn,$sql);
-    if(mysqli_num_rows($result)===1){
+    if(mysqli_num_rows($result)==1){
         $row=mysqli_fetch_assoc($result);
+        // echo($row['Email'].$Email.$row['Password'].$Password);
          //$sql = "SELECT * FROM users WHERE user_name='$uname' AND Password='$pass'";
         if($row['Email']===$Email &&$row['Password']===$Password){
-            echo "Logged in";
             $_SESSION['Email']=$row['Email'];
             $_SESSION['Name']=$row['CompanyName'];
             $_SESSION['logged_in']=true;
             $_SESSION['role']="Pharmaceutical Company";
             header("Location: manufacturer_profile.php");//How to redirect
+            echo "Logged in";
             exit();
         }else{
             echo("Email or Password don't match");

@@ -1,6 +1,6 @@
 <?php
 $userName="root";
-$Password="208hr882";
+$Password="";
 $dbName ='drug_dispensing_tool';
 
 $conn=new mysqli('localhost',$userName,$Password,$dbName);

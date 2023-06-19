@@ -38,11 +38,11 @@ if(isset($_POST['Email'])&&isset($_POST['Email'])){
     $result=mysqli_query($conn,$sql);
     if(mysqli_num_rows($result)===1){
         $row=mysqli_fetch_assoc($result);
-        $sql = "SELECT * FROM users WHERE user_name='$uname' AND Password='$pass'";
-        if($row['user_name']===$uname &&$row['Password']===$pass){
+        // $sql = "SELECT * FROM users WHERE user_name='$uname' AND Password='$pass'";
+        if($row['Email']===$Email &&$row['Password']===$Password){
             echo "Logged in";
             $_SESSION['Email']=$row['Email'];
-            $_SESSION['PatientName']=$row['PatientName'];
+            $_SESSION['Name']=$row['PatientName'];
             $_SESSION['logged_in']=true;
             $_SESSION['role']="patient";
             header("Location: patient_profile.php");//How to redirect
