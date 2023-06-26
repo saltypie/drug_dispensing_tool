@@ -1,3 +1,20 @@
+<?php
+require("../connection.php");
+require("../insertions.php");
+if (isset($_POST['submit'])) {
+        insertion($_POST);
+        session_start();
+        $_SESSION["Name"]=$_POST["PatientName"];
+        $_SESSION["loggedin"]=true;
+        $_SESSION["role"]="Patient";
+        header("Location:patient_profile.php");
+}else{
+    echo"not set";
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,7 +29,7 @@
             <div class="card hover-card shadowbox">
                 <div class="card-body shadowbox-body">
                     <h4>SIGNUP PATIENT</h4>
-                    <form action="add_patient.php" method="post">
+                    <form action="" method="post">
                         <label>SSN: </label><input type="text" name="PatientSSN"><br>
                         <label>Email: </label><input type="email" name="Email"><br>
                         <label>Password: </label><input type="password" name="Password"><br>
