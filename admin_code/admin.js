@@ -1,0 +1,26 @@
+$(document).ready(function(){
+  $(".pharmacist_displayer").click(function(){
+    $(".pharmacistTb").toggle();
+    $(".patientTb").hide();
+    $(".doctorTb").hide();
+    $(".companyTb").hide();   
+  });
+  $(".doctor_displayer").click(function(){
+    $(".doctorTb").toggle();
+    $(".patientTb").hide();
+    $(".pharmacistTb").hide();
+    $(".companyTb").hide();    
+  });
+  $(".patient_displayer").click(function(){
+    $(".patientTb").toggle();
+    $(".doctorTb").hide();
+    $(".pharmacistTb").hide();
+    $(".companyTb").hide();
+  });
+  $(".company_displayer").click(function(){
+    $(".companyTb").toggle();
+    $(".patientTb").hide();
+    $(".doctorTb").hide();
+    $(".pharmacistTb").hide();
+  });
+});

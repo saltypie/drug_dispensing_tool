@@ -7,6 +7,6 @@ $conn=new mysqli('localhost',$userName,$Password,$dbName);
 if($conn->connect_error){
     die("Connection Failed");
 }else{
-     echo("Connection Success");
+    //  echo("Connection Success");
 }
 ?>

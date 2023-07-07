@@ -45,7 +45,7 @@ if(isset($_POST['Email'])&&isset($_POST['Password'])){
         if($row['Email']===$Email &&$row['Password']===$Password){
             echo "Logged in";
             $_SESSION['Email']=$row['Email'];
-            $_SESSION['DoctorID']=$row['DoctorID'];
+            $_SESSION['SSN']=$row['DoctorSSN'];
             $_SESSION['logged_in']=true;
             $_SESSION['role']="Doctor";
             header("Location: prescribe.php");//How to redirect

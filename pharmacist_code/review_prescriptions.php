@@ -3,15 +3,10 @@
         require_once("../connection.php");
         // print_r($_POST);
         if(isset($_POST) and isset($_POST["IDToUpdate"])){            
-            $sql="UPDATE patientprescription SET ApprovalStatus=\"approved\", ApprovingPharamacist=\"".$_SESSION["Name"]."\" WHERE PrescriptionID=".$_POST["IDToUpdate"];
-            mysqli_query($conn,$sql);
-            header("Refresh:0;url=pharmacist_home.php");
+            $sql="UPDATE patientprescriptions SET ApprovalStatus=\"approved\", ApprovingPharamacist=\"".$_SESSION["Name"]."\" WHERE PrescriptionID=".$_POST["IDToUpdate"];
+            header("Refresh:0;url=double_copy.php");
             // echo($sql);
         }
-        if(isset($_POST['logout']) and $_POST['logout']=="true"){
-            session_destroy();
-            header("Location: ../landing.php");
-        }        
         // header("Location: select_copy.php");
         // $result=$conn->query($slctn);
 ?>
@@ -25,10 +20,6 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
     <script src="paging.js"></script>    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../CSS/styles.css">
     <style>
         table {
             background: white;
@@ -60,29 +51,6 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-            <a class="navbar-brand" href="http://localhost/WORK/drug_dispensing_tool/landing.php"><img src="../images/logo-final.png" alt="Logo" class="the-logo"></a>
-            </div>
-            <ul class="nav navbar-nav">
-
-            <li>
-                <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><?php echo $_SESSION["Name"]?>
-                    <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                    <li><form action="" method="post"><button type="submit"name="logout" value="true">Logout</button></form></li>
-                    <li><a href="pharmacist_profile.php">Profile</a></li>
-                    </ul>
-                </div>
-            </li>
-
-            </ul>
-        </div>
-    </nav>
- 
-
     <h1>Unapproved Prescriptions</h1><br>
     <!-- Patient tb -->
     <h2>Prescriptions\</h2>
@@ -100,9 +68,8 @@
         <!-- <tbody> -->
 
             <?php
-                require_once("../connection.php");
-                $slctn="SELECT * FROM patientprescription WHERE `ApprovalStatus` IS NULL AND `PharmacyName`=\"".$_SESSION["Pharmacy"]."\";";
-                echo $slctn;
+                require_once("connection.php");
+                $slctn="SELECT * FROM patientprescriptions WHERE `ApprovalStatus`=NULL AND `PHARMACY_NAME`='".$_SESSION["Pharmacy"]."'";
                 $result=$conn->query($slctn);
                 // $result_array=$result->fetch_assoc();
                 while($result_array = $result->fetch_assoc())    {

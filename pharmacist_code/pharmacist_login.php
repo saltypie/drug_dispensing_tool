@@ -23,7 +23,6 @@
 </body>
 </html>
 <?php
-session_abort();
 session_start();
 include "../connection.php";
 if(isset($_POST['Email'])&&isset($_POST['Password'])){
@@ -49,6 +48,7 @@ if(isset($_POST['Email'])&&isset($_POST['Password'])){
             $_SESSION['logged_in']=true;
             $_SESSION['role']=$row["Roles"];
             $_SESSION['Name']=$row["Names"];
+            $_SESSION['Pharmacy']=$row["PharmacyName"];
             header("Location: pharmacist_home.php");//How to redirect
             exit();
         }else{

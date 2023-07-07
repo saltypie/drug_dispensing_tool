@@ -45,7 +45,7 @@ if (isset($_POST['submit'])) {
         $_SESSION["Name"]=$_POST["Names"];
         $_SESSION["loggedin"]=true;
         $_SESSION["role"]=$_POST["Roles"];
-
+        $_SESSION["Pharmacy"]=$_POST["PharmacyName"];
         header("Location: pharmacist_home.php");
         
 }else{

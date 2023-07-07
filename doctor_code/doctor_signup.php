@@ -24,9 +24,9 @@
                         <input type="text" name="tablename" value="Doctor" style="display: none;"><!--Which Table Are we inserting to-->
                         <input type="text" name="columns" value="DoctorSSN,DoctorName,Hospital,Phone,Email,Password"style="display: none;"><!--A way of specifying the table columns corresponding to this form-->
                         <button type="submit" name="submit" class="btn btn-primary">Submit</button> 
-</form>
-</div>
-</div>
+                    </form>
+                </div>
+            </div>
 </div>
 
 </body>
@@ -38,7 +38,7 @@ require("../insertions.php");
 if (isset($_POST['submit'])) {
         insertion($_POST);
         session_start();
-        $_SESSION["DoctorSSN"]=$_POST["DoctorSSN"];
+        $_SESSION["SSN"]=$_POST["DoctorSSN"];
         $_SESSION["Name"]=$_POST["DoctorName"];
         $_SESSION["loggedin"]=true;
         $_SESSION["role"]="Doctor";
