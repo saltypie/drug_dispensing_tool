@@ -9,9 +9,9 @@
     transform: translate(-50%, -50%);
     margin: 10px;
     padding: 10px;
-  }
+}
 
-  .shadowbox-body {
+.shadowbox-body {
     height: 40%; /* Adjust the height as per your requirement */
     background-color: white;
     position: relative;
@@ -20,7 +20,7 @@
     transform: translate(-50%, -50%);
     margin: 10px;
     padding: 10px;
-  }
+}
   html { overflow-y: scroll; }
   body{
     background-color: #5CDB95!important;
@@ -63,3 +63,17 @@
   .label-info{
     background-color: #5CDB95 !important;
   }
+
+.centerbox{
+    width: 50vw;
+    margin:auto;
+    /* padding-top: 30vh; */
+    text-align: center;
+    background-image:;
+}
+.majordiv{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

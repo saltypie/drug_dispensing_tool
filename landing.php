@@ -9,7 +9,6 @@
         <link rel="stylesheet" href="CSS/styles.css">
     </head>
     <body>
-        
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -40,7 +39,6 @@
                         <li><a href="doctor_code/doctor_signup.php">Doctor</a></li>
                         <li><a href="pharmacist_code/pharmacist_signup.php">Pharmacist</a></li>
                         <li><a href="manufacturer_code/manufacturer_signup.php">Pharmaceutical Company</a></li>
-                        <li><a href="#">Admin</a></li>
                         </ul>
                     </div>
                 </li>
@@ -48,8 +46,19 @@
                 </ul>
             </div>
         </nav>
-        <div class="container">
+        <div class="majordiv">    
+            <div class="centerbox">
+                <h1>Drug Dispensing Made Easy</h1>
+                <p>Welcome</p>
+                <a href="" class="hero-btn">Purchase Medicine Today</a>
+            </div>  
+        </div>        
 
+        <div class="majordiv" style="background-color:white;">
+            <div class="centerbox">
+                <p>Our Partners</p>
+            </div>
+        </div>
 
     </body>
 </html>
