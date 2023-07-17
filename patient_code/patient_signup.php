@@ -37,7 +37,7 @@ if (isset($_POST) and isset($_POST['submit'])) {
             
             <!-- <div class="card hover-card shadowbox">
                 <div class="card-body shadowbox-body"> -->
-                    <div style="margin-left: 5vw;" class="centerholder ">
+                    <div style="margin-top:6vh; margin-left: 5vw;" class="centerholder ">
                         <form class="laform" action="" method="post">
                             <div class="centerholder">
                                 <h4 style="margin-left:1.8vw; margin-top:0.000001vh;">SIGNUP PATIENT</h4><br>
@@ -94,7 +94,7 @@ if (isset($_POST) and isset($_POST['submit'])) {
                                     </div>
                                     <div class="itsown">
                                         <label>DOB: </label>
-                                        <br><input style="width: 180px"type="date" name="Age">
+                                        <br><input max="<?= date('Y-m-d'); ?>" style="width: 180px"type="date" name="Age">
                                     </div>
                             </div>
                             <br>
