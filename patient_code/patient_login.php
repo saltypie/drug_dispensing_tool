@@ -1,23 +1,26 @@
-<DOCTYPE html> 
+<!DOCTYPE html> 
 <html>
     <head>
         <title>LOGIN</title>
-        <link rel="stylesheet" type="text/css" href="work.css">
-        <link rel="stylesheet" type="css" href="../CSS/styles.css">
-
+        <!-- <link rel="stylesheet" type="text/css" href="work.css"> -->
+        <link rel="stylesheet" href="../CSS/styles.css">
     </head>
     <body>
         <div class="centerholder">            
             <form class="laform" action="" method="post"><!--Link index to the login page post-->
-                <h2>LOGIN</h2>
+                <div class="centerholder">
+                    <h2>LOGIN</h2>
+                </div>
                 <?php if(isset($_GET['error'])){ ?>
                         <p class="error"><?php echo $_GET['error'];?></p>
                 <?php } ?><!--previous 3 lines syntax revise them-->
-                <label>Username</label>
-                <input type="Email" name="Email" placeholder="Email" required><br>
-                <label>Password</label>
-                <input type="Password"name="Password"placeholder="Password" required><br>
-                <button type="submit">Login</button>
+                <label>Username</label><br>
+                <input type="Email" name="Email" placeholder="Email" required><br><br>
+                <label>Password</label><br>
+                <input type="Password"name="Password"placeholder="Password" required><br><br><br>
+                <div class="centerholder">
+                    <button type="submit">Login</button>
+                </div>
             </form>
         </div>
     </body>

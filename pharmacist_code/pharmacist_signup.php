@@ -10,7 +10,6 @@
 </head>
 <body>
 <div class="container d-flex justify-content-center align-items-center" style="padding: 0%;margin:0%;">
-            <img src="../images/logo-final.png" alt="Logo" class="the-logo">
             <div class="card hover-card shadowbox">
                 <div class="card-body shadowbox-body">
                     <h4>Signup Pharmacist</h4>

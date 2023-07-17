@@ -10,15 +10,20 @@
 <body>
     <div class="centerholder">
         <form class="laform" action="" method= "POST">
-            <h3>LOGIN</h3>
+                <div class="centerholder">
+                    <h3>LOGIN</h3>
+                </div>
                 <?php if(isset($_GET['error'])){ ?>
                         <p class="error"><?php echo $_GET['error'];?></p>
                 <?php } ?><!--previous 3 lines syntax revise them-->
-                <label>DoctorEmail</label>
+                <label>DoctorEmail</label><br>
                 <input type="text" name="Email" placeholder="Email" required><br>
-                <label>Password</label>
-                <input type="Password"name="Password"placeholder="Password" required><br>
-                <button type="submit">Login</button>   
+                <label>Password</label><br>
+                <input type="Password"name="Password"placeholder="Password" required><br><br>
+                <div class="centerholder">
+                    <br>
+                    <button type="submit">Login</button>   
+                </div>
         </form>
     </div>
 

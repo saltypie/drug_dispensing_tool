@@ -112,3 +112,8 @@
   padding: 2vw;
   border-radius: 4px 4px 4px 4px;
 }
+.centerholder{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

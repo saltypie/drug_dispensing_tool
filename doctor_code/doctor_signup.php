@@ -9,25 +9,24 @@
         <link rel="stylesheet" href="../CSS/styles.css">
 </head>
 <body>
-<div class="container d-flex justify-content-center align-items-center" style="padding: 0%;margin:0%;">
-            <img src="../images/logo-final.png" alt="Logo" class="the-logo">
-            <div class="card hover-card shadowbox">
-                <div class="card-body shadowbox-body">
-                    <h4>Signup Doctor</h4>
-                    <form action="" method="post"><!--Empty action will call the same file-->
-                        <label>DoctorID:</label><input type="text" name="DoctorID"><br>
-                        <label>DoctorName:</label><input type="text" name="DoctorName"><br>
-                        <label>Hospital:</label><input type="text" name="Hospital"><br>
-                        <label>Phone: </label><input type="text" name="Phone"><br>
-                        <label>Email:</label><input type="email" name="Email"><br>
-                        <label>Password: </label><input type="password" name="Password"><br>
+<!-- <div class="container d-flex justify-content-center align-items-center" style="padding: 0%;margin:0%;">
+            <div class="card hover-card shadowbox"> -->
+                <div class="centerholder">
+                    <form style="margin-top:7%;" class="laform" method="post"><!--Empty action will call the same file-->
+                        <h4>Signup Doctor</h4><br>
+                        <label>DoctorID:</label><br><input type="text" name="DoctorID"><br>
+                        <label>DoctorName:</label><br><input type="text" name="DoctorName"><br>
+                        <label>Hospital:</label><br><input type="text" name="Hospital"><br>
+                        <label>Phone: </label><br><input type="text" name="Phone"><br>
+                        <label>Email:</label><br><input type="email" name="Email"><br>
+                        <label>Password: </label><br><input type="password" name="Password"><br>
                         <input type="text" name="tablename" value="Doctor" style="display: none;"><!--Which Table Are we inserting to-->
                         <input type="text" name="columns" value="DoctorSSN,DoctorName,Hospital,Phone,Email,Password"style="display: none;"><!--A way of specifying the table columns corresponding to this form-->
-                        <button type="submit" name="submit" class="btn btn-primary">Submit</button> 
+                        <br><button type="submit" name="submit" class="btn btn-primary">Submit</button> 
                     </form>
                 </div>
-            </div>
-</div>
+            <!-- </div>
+</div> -->
 
 </body>
 </html>

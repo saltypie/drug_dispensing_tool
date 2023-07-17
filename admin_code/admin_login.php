@@ -7,15 +7,19 @@
     <body>
         <div class="centerholder">
             <form class="laform" action="" method="post"><!--Link index to the login page post-->
-                <h2>LOGIN</h2>
+                <div class="centerholder">
+                    <h2>LOGIN</h2>
+                </div>
                 <?php if(isset($_GET['error'])){ ?>
                         <p class="error"><?php echo $_GET['error'];?></p>
                 <?php } ?><!--previous 3 lines syntax revise them-->
-                <label>Username</label>
+                <label>Username</label><br>
                 <input type="text" name="Username" placeholder="Username" required><br>
-                <label>Password</label>
-                <input type="Password"name="Password"placeholder="Password" required><br>
-                <button type="submit">Login</button>
+                <label>Password</label><br>
+                <input type="Password"name="Password"placeholder="Password" required><br><br>
+                <div class="centerholder">
+                    <button type="submit">Login</button>
+                </div>
             </form>
         </div>
     </body>
