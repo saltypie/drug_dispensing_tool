@@ -5,20 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="work.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/styles.css">
 </head>
 <body>
-    <form  action="" method= "POST">
-        <h3>LOGIN</h3>
-<?php if(isset($_GET['error'])){ ?>
-                    <p class="error"><?php echo $_GET['error'];?></p>
-            <?php } ?><!--previous 3 lines syntax revise them-->
-            <label>DoctorEmail</label>
-            <input type="text" name="Email" placeholder="Email" required><br>
-            <label>Password</label>
-            <input type="Password"name="Password"placeholder="Password" required><br>
-            <button type="submit">Login</button>   
-</form>
+    <div class="centerholder">
+        <form class="laform" action="" method= "POST">
+            <h3>LOGIN</h3>
+                <?php if(isset($_GET['error'])){ ?>
+                        <p class="error"><?php echo $_GET['error'];?></p>
+                <?php } ?><!--previous 3 lines syntax revise them-->
+                <label>DoctorEmail</label>
+                <input type="text" name="Email" placeholder="Email" required><br>
+                <label>Password</label>
+                <input type="Password"name="Password"placeholder="Password" required><br>
+                <button type="submit">Login</button>   
+        </form>
+    </div>
 
 </body>
 </html>
@@ -46,6 +48,7 @@ if(isset($_POST['Email'])&&isset($_POST['Password'])){
             echo "Logged in";
             $_SESSION['Email']=$row['Email'];
             $_SESSION['SSN']=$row['DoctorSSN'];
+            $_SESSION['Name']=$row['DoctorName'];
             $_SESSION['logged_in']=true;
             $_SESSION['role']="Doctor";
             header("Location: prescribe.php");//How to redirect

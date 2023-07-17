@@ -3,20 +3,23 @@
     <head>
         <title>LOGIN</title>
         <link rel="stylesheet" type="text/css" href="work.css">
+        <link rel="stylesheet" type="css" href="../CSS/styles.css">
 
     </head>
     <body>
-        <form action="" method="post"><!--Link index to the login page post-->
-            <h2>LOGIN</h2>
-            <?php if(isset($_GET['error'])){ ?>
-                    <p class="error"><?php echo $_GET['error'];?></p>
-            <?php } ?><!--previous 3 lines syntax revise them-->
-            <label>Username</label>
-            <input type="Email" name="Email" placeholder="Email" required><br>
-            <label>Password</label>
-            <input type="Password"name="Password"placeholder="Password" required><br>
-            <button type="submit">Login</button>
-        </form>
+        <div class="centerholder">            
+            <form class="laform" action="" method="post"><!--Link index to the login page post-->
+                <h2>LOGIN</h2>
+                <?php if(isset($_GET['error'])){ ?>
+                        <p class="error"><?php echo $_GET['error'];?></p>
+                <?php } ?><!--previous 3 lines syntax revise them-->
+                <label>Username</label>
+                <input type="Email" name="Email" placeholder="Email" required><br>
+                <label>Password</label>
+                <input type="Password"name="Password"placeholder="Password" required><br>
+                <button type="submit">Login</button>
+            </form>
+        </div>
     </body>
 </html>
 <?php

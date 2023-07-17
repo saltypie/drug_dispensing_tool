@@ -33,7 +33,7 @@ require("../insertions.php");
 if (isset($_POST['submit'])) {
         insertion($_POST);
         session_start();
-        $_SESSION["CompanyName"]=$_POST["CompanyName"];
+        $_SESSION["Name"]=$_POST["CompanyName"];
         $_SESSION["loggedin"]=true;
         $_SESSION["role"]="Pharmaceutical";
         header("Location: manufacturer_profile.php");

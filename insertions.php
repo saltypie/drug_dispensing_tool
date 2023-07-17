@@ -9,7 +9,7 @@ require("connection.php");
             $values="";
             foreach($input as $key=>$value){
                 if($key!='tablename'and$key!='columns'and$key!='submit'){//we only want to insert the values
-                    echo "\n KEY ".$key."KEY \n";
+                    // echo "\n KEY ".$key."KEY \n";
                     $values=$values."'$value',";//Keep concatenating the value variable to the `values` string
                 }
             } 
@@ -18,8 +18,8 @@ require("connection.php");
             echo "\n".$query;
             $run=mysqli_query($conn,$query)or die(mysqli_error($conn));
             if ($run) {
-                echo "<h1>submitted successfully<h1>";
-                print_r($input);
+                // echo "<h1>submitted successfully<h1>";
+                // print_r($input);
             }else {
                 echo "unsuccessful submission";
             }

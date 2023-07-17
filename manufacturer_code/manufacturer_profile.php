@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/styles.css">
-    <title>Profile Details</title>
+    <title>Document</title>
     <style>
         table {
             background: steelblue;
@@ -40,10 +40,9 @@
     </style>
 </head>
 <body>
+    <?php require("../navi.php"); 
+    common_navi($_SESSION); ?>    
     <h1>Your Profile</h1><br>
-    <div class="name-header">
-        <h4><?php echo("Name: ".$_SESSION["Name"]);?></h4>
-    </div>
     <table>
         <tr>
             <td> CompanyName </td>

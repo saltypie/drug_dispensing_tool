@@ -5,6 +5,7 @@ if (isset($_POST['submit'])) {
         insertion($_POST);
         session_start();
         $_SESSION["Name"]=$_POST["PatientName"];
+        $_SESSION["SSN"]=$_POST["PatientSSN"];
         $_SESSION["loggedin"]=true;
         $_SESSION["role"]="Patient";
         header("Location:patient_profile.php");
@@ -29,23 +30,25 @@ if (isset($_POST['submit'])) {
             <div class="card hover-card shadowbox">
                 <div class="card-body shadowbox-body">
                     <h4>SIGNUP PATIENT</h4>
-                    <form action="" method="post">
-                        <label>SSN: </label><input type="text" name="PatientSSN"><br>
-                        <label>Email: </label><input type="email" name="Email"><br>
-                        <label>Password: </label><input type="password" name="Password"><br>
-                        <label>Full Name: </label><input type="text" name="PatientName"><br>
-                        <label>Phone:</label><input type="text" name="PhoneNumber"><br>
-                        <label>Gender: </label><input type="text" name="Gender"><br>
-                        <label>Next of Kin: </label><input type="text" name="NextofKin"><br>
-                        <label>Allergies: </label><input type="text" name="Allergies"><br>
-                        <!-- <label>Gender: </label><input type="text" name="Gender"><br> -->
-                        <label>Family Conditions: </label><input type="text" name="FamilyConditions"><br>
-                        <label>Age: </label><input type="text" name="Age"><br>   
-                        <label>Address: </label><input type="text" name="Address"><br>   
-                        <input type="text" name="tablename" value="Patient" style="display: none;">
-                        <input type="text" name="columns" value="PatientSSN,Email,Password,PatientName,PhoneNumber,Gender,NextofKin,Allergies,FamilyConditions,Age,Address" style="display: none;">
-                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>         
-                    </form>
+                    <div class="centerholder">
+                        <form class="laform" action="" method="post">
+                            <label>SSN: </label><input type="text" name="PatientSSN"><br>
+                            <label>Email: </label><input type="email" name="Email"><br>
+                            <label>Password: </label><input type="password" name="Password"><br>
+                            <label>Full Name: </label><input type="text" name="PatientName"><br>
+                            <label>Phone:</label><input type="text" name="PhoneNumber"><br>
+                            <label>Gender: </label><input type="text" name="Gender"><br>
+                            <label>Next of Kin: </label><input type="text" name="NextofKin"><br>
+                            <label>Allergies: </label><input type="text" name="Allergies"><br>
+                            <!-- <label>Gender: </label><input type="text" name="Gender"><br> -->
+                            <label>Family Conditions: </label><input type="text" name="FamilyConditions"><br>
+                            <label>DOB: </label><input type="date" name="Age"><br>   
+                            <label>Address: </label><input type="text" name="Address"><br>   
+                            <input type="text" name="tablename" value="Patient" style="display: none;">
+                            <input type="text" name="columns" value="PatientSSN,Email,Password,PatientName,PhoneNumber,Gender,NextofKin,Allergies,FamilyConditions,Age,Address" style="display: none;">
+                            <button type="submit" name="submit" class="btn btn-primary">Submit</button>         
+                        </form>
+                    </div>
 
                 </div>            
             </div>
