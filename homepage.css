@@ -323,3 +323,40 @@ h3{
     width:300px;
     height:280px;
 }
+.options-container {
+    position: relative;
+    display: inline-block;
+}
+.nav-btns{
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    /*optional*/
+    font-family: arial, sans-serif;
+    /*input has OS specific font-family*/
+    color:white;
+    text-decoration: underline;
+    cursor: pointer;    
+}        
+.option-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+    margin-top: 1vh;
+    /* background-color: #05386B; */
+    color: white;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.options-container:hover .options {
+display: block;
+}
+
+.options {
+display: none;
+position: absolute;
+ background-color: #069;
+padding: 10px;
+
+}
