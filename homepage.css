@@ -1,0 +1,325 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+    
+}
+
+.header {
+    min-height: 100vh;
+    width: 100%;
+    /* background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(https://burjeel.com/abu-dhabi/wp-content/uploads/sites/2/2022/01/saving_lives-1.jpg); */
+    background-position: center;
+    background-size: cover;
+    background-color: #5CDB95;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    position: relative;
+}
+
+nav {
+    display: flex;
+    padding: 2% 6%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav img {
+    width: 150px;
+}
+
+.nav-links {
+    flex: 1;
+    text-align: right;
+}
+
+.nav-links ul {
+    list-style: none;
+}
+
+.nav-links ul li {
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+
+.nav-links ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.nav-links ul li::after {
+    content: "";
+    width: 0%;
+    height: 2px;
+    background-color: #f44336;
+    display: block;
+    margin: auto;
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-links ul li:hover::after {
+    width: 100%;
+}
+
+.text-box {
+    width: 90%;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.text-box h1 {
+    font-size: 62px;
+}
+
+.text-box p {
+    margin: 10px 0 40px;
+    font-size: 14px;
+    color: #fff;
+}
+
+.hero-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 12px 34px;
+    font-size: 13px;
+    position: relative;
+    cursor: pointer;
+}
+.majordiv-content{
+    width: 50vw;
+    margin:auto;
+    padding-top: 30vh;
+    text-align: center;
+}
+
+#height{
+    width: 500px;
+    height:500px;
+}
+
+
+.illa{
+    padding:0px;
+    margin: 0px;
+    background-color:#171717;
+    background-size: auto;
+    height: 100vh;
+    overflow: hidden;
+
+}
+h2{
+
+    margin-top: 30vh;
+    padding: 10px;
+    background-color: whitesmoke;
+    text-align: left;
+    border-radius: 30px;
+    color:black;
+    display: inline-block;
+}
+#imag1{
+    
+   margin-right:0% ;
+    border-radius: 10px;
+    width: 650px;
+    height: 105vh;
+    float:right;
+    overflow: hidden;
+  
+
+
+}
+@font-face {
+    font-family: Ubuntu;
+    src: url(Ubuntu.ttf);
+}
+#ps{
+    color:whitesmoke;
+    vertical-align: text-bottom;
+    position: absolute;
+    font-family: Ubuntu;
+    
+    
+}
+#ps{
+    font-size: 2.4em;
+    
+}
+#rs{
+    font-size: 2.4em;
+    color: whitesmoke
+}
+#pl{
+    text-align: justify;
+    color: whitesmoke;
+
+
+}
+
+#title{
+    margin-top:100px ;
+    text-align: center;
+    padding:10px;
+    margin-left: 465px;
+    border-radius:20px ;
+    background-color: rgba(240, 240,240, 240);
+    display: inline-block;
+    transition: transform 0.3s,background-color 0.3s,color 0.3s;
+
+
+}
+
+#title:hover {
+    background-color: #171717;
+    color:rgba(240, 240,240, 240);
+    transform: rotateY('360');
+
+
+}
+
+
+
+
+
+.doctors{
+    width:80%;
+    margin:auto;
+    text-align: center;
+    padding:100px;
+
+}
+h1{
+    font-size: 36px;
+    font-weight: 600;
+}
+p{
+    color:#777;
+    font-size:14px;
+    font-weight:300;
+    line-height: 22px;
+    padding: 10px;
+}
+.row{
+    margin-top: 5%;
+    display:flex;
+    justify-content: space-between;
+}
+.course-col{
+    flex-basis: 31%;
+    background: #fff3f3;
+    border-radius: 10px;
+    margin-bottom:5%;
+    padding:20px 12px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    height:75vh;
+}
+.course-col p{
+    text-align: justify;
+}
+#imd1{
+    margin-left:50px;
+    width: 250px;
+    height: 250px;
+}
+#imd2{
+    margin-left:50px;
+    width: 250px;
+    height: 250px;
+}
+#imd3{
+    margin-left:50px;
+    width: 250px;
+    height: 250px;
+
+}
+
+
+
+h3{
+    text-align: center;
+    font-weight: 600;
+    margin:10px 0;
+}
+.course-col:hover{
+    box-shadow:0 0 20px 0px rgba(0,0,0,0.2)
+}
+@media(max-width: 700px){
+    .row{
+    flex-direction: column;
+    }
+}
+.campus{
+    width:80%;
+    margin:auto;
+    text-align: center;
+    padding-top: 50px;
+}
+.campus-col{
+    flex-basis: 32%;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    position:relative;
+    overflow:hidden;
+    
+}
+.campus-col img{
+    width:100%;
+}
+.layer{
+    background-color:transparent;
+    height:100%;
+    width:100%; 
+    transition: 0.5s;
+}
+.layer:hover{
+    background: rgba(226,0,0,0.7);
+
+}
+#pas{
+    color: #171717;
+}
+.Aboutus{
+    width:80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom:200px;
+    text-align: center;
+    padding-bottom: 20vh;
+    border-bottom: 20vh;
+
+    background-color:#5CDB95 ;
+    border-radius: 10vh;
+    color: black;
+
+}
+.Aboutus p{
+    color:black;
+}
+.contact {
+
+    background-color:#5CDB95;
+    
+}
+.contact p{
+
+    color:#171717;
+}
+.thepartners{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.thepartners img{
+    width:300px;
+    height:280px;
+}
