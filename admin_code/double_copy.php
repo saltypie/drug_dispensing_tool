@@ -2,7 +2,7 @@
         require_once("../connection.php");
         if(isset($_POST['logout']) and $_POST['logout']=="true"){
             session_destroy();
-            header("Location: ../landing.php");
+            header("Location: ../Homepage.html");
         }        
         session_start();
         // print_r($_POST);
@@ -44,7 +44,7 @@
     <link rel="stylesheet" href="../CSS/styles.css">      
     <style>
         table {
-            background: steelblue;
+            background: lightblue;
             border: 2px solid balck;
             width: 100%;
         }
@@ -70,14 +70,19 @@
             height: 100px;
             border: 2px solid black;
         }
+        .the-options{
+            cursor:pointer;
+        }
     </style>
 
 </head>
 <body>
-    <nav class="navbar navbar-default">
+    <?php require("../navi.php"); 
+    common_navi($_SESSION); ?>
+    <!-- <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-            <a class="navbar-brand" href="http://localhost/WORK/drug_dispensing_tool/landing.php"><img src="../images/logo-final.png" alt="Logo" class="the-logo"></a>
+            <a class="navbar-brand" href="http://localhost/WORK/drug_dispensing_tool/Homepage.html"><img src="../images/admin-logo-1.gif" alt="Logo" class="the-logo"></a>
             </div>
             <ul class="nav navbar-nav">
 
@@ -94,10 +99,12 @@
 
             </ul>
         </div>
-    </nav>    
-    <h1>ADMIN CENTRE</h1><br>
+    </nav>     -->
+    <div class="centerholder">
+        <h1>ADMIN CENTRE</h1><br>
+    </div>
 
-    <div class="options" style="border: 1px solid grey; width: 37vw; float: right; position: absolute; left:30vw;"><p class="doctor_displayer" style="display:inline; border: 1px solid grey">Doctor Table</p><p class="pharmacist_displayer" style="display:inline; border: 1px solid grey">Pharmacist Table</p><p class="patient_displayer" style="display:inline; border: 1px solid grey">Patient Table</p><p class="company_displayer" style="display:inline; border: 1px solid grey">Pharmaceutical Company Table</p></div>    
+    <div class="the-options" style="border: 1px solid grey; width: 37vw; float: right; position: absolute; left:30vw;"><p class="doctor_displayer" style="display:inline; border: 1px solid grey">Doctor Table</p><p class="pharmacist_displayer" style="display:inline; border: 1px solid grey">Pharmacist Table</p><p class="patient_displayer" style="display:inline; border: 1px solid grey">Patient Table</p><p class="company_displayer" style="display:inline; border: 1px solid grey">Pharmaceutical Company Table</p></div>    
     
     <!-- Patient tb -->
     <div class="patientTb" style="display:none">

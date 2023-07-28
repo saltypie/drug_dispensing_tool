@@ -7,7 +7,7 @@
 
     </head>
     <body>
-        <div class="centerholder">
+        <div class="majordiv centerholder">
             <form class="laform" action="" method="post"><!--Link index to the login page post-->
                 <div class="centerholder">
                     <h2>LOGIN</h2>
@@ -15,7 +15,7 @@
                 <?php if(isset($_GET['error'])): ?>
                         <p class="error"><?php echo $_GET['error'];?></p>
                 <?php endif ; ?><!--previous 3 lines syntax revise them-->
-                <label>Company Name</label><br>
+                <label>Company Email</label><br>
                 <input type="text" name="Email" placeholder="Email" required><br>
                 <label>Password</label><br>
                 <input type="Password"name="Password"placeholder="Password" required><br><br>
@@ -33,6 +33,8 @@ include "../connection.php";
 if(isset($_POST['Email'])&&isset($_POST['Email'])){
     $Email =$_POST['Email'];
     $Password=$_POST['Password'];
+    $Password=sha1($Password);
+
     if(empty($Email)){
         echo("Email is required");
         exit();

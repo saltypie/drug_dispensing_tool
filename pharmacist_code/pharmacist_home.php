@@ -10,7 +10,7 @@
         }
         if(isset($_POST['logout']) and $_POST['logout']=="true"){
             session_destroy();
-            header("Location: ../landing.php");
+            header("Location: ../Homepage.html");
         }        
         // header("Location: select_copy.php");
         // $result=$conn->query($slctn);
@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="../CSS/styles.css">
     <style>
         table {
-            background: white;
+            background: lightblue;
             border: 2px solid balck;
             width: 100%;
         }
@@ -49,12 +49,14 @@
             border: 2px solid black;
             width: 10%;
             text-align: center;
+            background-color: lightblue;
+
         }
 
 
         tbody {
             overflow-y: scroll;
-            height: 100px;
+            /* height: 100px; */
             border: 2px solid black;
         }
     </style>
@@ -63,7 +65,7 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-            <a class="navbar-brand" href="http://localhost/WORK/drug_dispensing_tool/landing.php"><img src="../images/logo-final.png" alt="Logo" class="the-logo"></a>
+            <a class="navbar-brand" href="http://localhost/WORK/drug_dispensing_tool/Homepage.html"><img src="../images/logo-final.png" alt="Logo" class="the-logo"></a>
             </div>
             <ul class="nav navbar-nav">
 

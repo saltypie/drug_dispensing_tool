@@ -9,29 +9,33 @@
     <link rel="stylesheet" href="../CSS/styles.css">
 </head>
 <body>
-<div class="container d-flex justify-content-center align-items-center" style="padding: 0%;margin:0%;">
-            <div class="card hover-card shadowbox">
-                <div class="card-body shadowbox-body">
-                    <h4>Signup Pharmacist</h4>
-                    <div class="centerholder">
+
+                    <div class="majordiv centerholder">
                         <form class="laform" method="post"><!--Empty action will call the same file-->
-                            <label>SSN:</label><input type="text" name="StaffSSN"><br>
-                            <label>Names:</label><input type="text" name="Names"><br>
+                        <div class="centerholder">
+                            <a href="../Homepage.html">
+                                <img class="login-logo" src="../images/logo-final.png" alt="">
+                            </a>
+                        </div>
+                            <h4 class="centerholder">Pharmacist Signup</h4>
+                            <label>SSN:</label>
+                            <br><input type="text" name="StaffSSN"><br>
+                            <label>Names:</label><br><input type="text" name="Names"><br>
                             <input type="text" name="Roles" value="Pharmacist" style="display: none;">
-                            <label>Email:</label><input type="email" name="Email"><br>
-                            <label>Password: </label><input type="password" name="Password"><br>
-                            <label>Practicing Years: </label><input type="text" name="PracticingYears"><br>
-                            <label>Pharmacy Name:</label><input type="text" name="PharmacyName"><br>
-                            <label>Phone: </label><input type="text" name="Telephone"><br>
-                            <label>Date of Birth: </label><input type="date" name="Age"><br>
+                            <label>Email:</label><br><input type="email" name="Email"><br>
+                            <label>Password: </label><br><input type="password" name="Password"><br>
+                            <label>Practicing Years: </label><br><input type="text" name="PracticingYears"><br>
+                            <label>Pharmacy Name:</label><br><input type="text" name="PharmacyName"><br>
+                            <label>Phone: </label><br><input type="text" name="Telephone"><br>
+                            <label>Date of Birth: </label><br><input max="<?= date('Y-m-d', strtotime('-15 years')); ?>" type="date" name="Age"><br>
                             <input type="text" name="tablename" value="pharmacystaff" style="display: none;"><!--Which Table Are we inserting to-->
                             <input type="text" name="columns" value="StaffSSN,Names,Roles,Email,Password,PracticingYears,PharmacyName,Telephone,Age"style="display: none;"><!--A way of specifying the table columns corresponding to this form-->
-                            <button type="submit" name="submit" class="btn btn-primary">Submit</button> 
+                            <br><div class="centerholder">
+                                <button type="submit" name="submit" class="btn btn-primary">Sign Up</button> 
+                            </div>
                         </form>
                     </div>
-</div>
-</div>
-</div>
+
 
 </body>
 </html>
@@ -40,6 +44,7 @@
 require("../connection.php");
 require("../insertions.php");
 if (isset($_POST['submit'])) {
+        $_POST["Password"] = sha1($_POST["Password"]);   
         insertion($_POST);
         session_start();
         $_SESSION["SSN"]=$_POST["StaffSSN"];

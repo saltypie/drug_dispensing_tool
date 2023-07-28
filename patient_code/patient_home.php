@@ -3,7 +3,7 @@
         require_once("../connection.php");
         if(isset($_POST['logout']) and $_POST['logout']=="true"){
             session_destroy();
-            header("Location: ../landing.php");
+            header("Location: ../Homepage.html");
         }
         if(isset($_POST) AND isset($_POST["goback"])){
             unset($_POST);
@@ -58,7 +58,7 @@
         }
 
         table {
-            background: white;
+            background: lightblue;
             border: 2px solid balck;
             width: 100%;
         }
@@ -76,21 +76,24 @@
             border: 2px solid black;
             width: 10%;
             text-align: center;
+            /* background-color: lightblue; */
+
         }
 
 
         tbody {
             overflow-y: scroll;
-            height: 100px;
+            /* height: 100px; */
             border: 2px solid black;
         }
+
     </style>
 </head>
 <body>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-            <a class="navbar-brand" href="http://localhost/WORK/drug_dispensing_tool/landing.php"><img src="../images/logo-final.png" alt="Logo" class="the-logo"></a>
+            <a class="navbar-brand" href="http://localhost/WORK/drug_dispensing_tool/Homepage.html"><img src="../images/logo-final.png" alt="Logo" class="the-logo"></a>
             </div>
             <ul class="nav navbar-nav">
 
@@ -120,8 +123,9 @@
                 <th>DrugCodes</th>
                 <th>Dosages(ml)</th>
                 <th>DoctorSSN</th> -->
-                <th>Date</th>
                 <th>Illness</th>
+                <th>Date</th>
+                <th>View</th>
             </tr>
             <!-- <tbody> -->
 
@@ -137,20 +141,16 @@
                         // "<td>".$result_array["Password"]."</td>".
                         echo(
                             '<tr>'.  
-                                // '<td>'.$result_array["PatientSSN"].'</td>'.
-                                // '<td>'.$result_array["DrugCodes"].'</td>'.
-                                // '<td>'.$result_array["Dosages"].'</td>'.
-                                // '<td>'.$result_array["DoctorSSN"].'</td>'.
-                                // '<td>'.$result_array["Date"].'</td>'.
                                 '<td>'.$result_array["Illness"].'</td>'.
+                                '<td>'.$result_array["Date"].'</td>'.
                                 "<td><form method=\"get\"><button type=\"submit\" name=\"PrescriptionToView\"class=\"button btn-blue\" value=".$result_array["PrescriptionID"].">View Prescription</button></form></td>".   
-                            '<tr>
-                            </table>'
+                            '<tr>'
                         );
                         // $_POST["tableToUpdate"]="patient";//So we know which table to change
                         // $_POST["colsToUpdate"]=array("PatientName","PhoneNumber","NextofKin","Allergies","FamilyConditions","Address");//So we know which table to change
                     }
-                ?>        
+                ?> 
+        </table>               
     <?php endif;?>    
     <!-- Patient tb -->
 

@@ -3,7 +3,7 @@
         require_once("../connection.php");
         if(isset($_POST['logout']) and $_POST['logout']=="true"){
             session_destroy();
-            header("Location: ../landing.php");
+            header("Location: ../Homepage.html");
         }
         if(isset($_POST) AND isset($_POST["goback"])){
             unset($_POST);
@@ -58,7 +58,7 @@
         }
 
         table {
-            background: white;
+            background: lightblue;
             border: 2px solid balck;
             width: 100%;
         }
@@ -76,12 +76,13 @@
             border: 2px solid black;
             width: 10%;
             text-align: center;
+            background-color: lightblue;
         }
 
 
         tbody {
             overflow-y: scroll;
-            height: 100px;
+            /* height: 100px; */
             border: 2px solid black;
         }
     </style>
@@ -100,12 +101,13 @@
                 <th>DoctorSSN</th> -->
                 <th>Date</th>
                 <th>Illness</th>
+                <th>View</th>
             </tr>
             <!-- <tbody> -->
 
                 <?php
                     $slctn="SELECT * FROM patientprescription WHERE `ApprovalStatus`=\"approved\" AND `ApprovingPharmacist`=\"".$_SESSION["SSN"].'"';
-                    echo $slctn;
+                    // echo $slctn;
                     $result=$conn->query($slctn);
                     // $result_array=$result->fetch_assoc();
                     while($result_array = $result->fetch_assoc())    {
@@ -122,14 +124,14 @@
                                 '<td>'.$result_array["Date"].'</td>'.
                                 '<td>'.$result_array["Illness"].'</td>'.
                                 "<td><form method=\"get\"><button type=\"submit\" name=\"PrescriptionToView\"class=\"button btn-blue\" value=".$result_array["PrescriptionID"].">View Prescription</button></form></td>".   
-                            '<tr>
-                            </table>'
+                            '<tr>'
                         );
                         // $_POST["tableToUpdate"]="patient";//So we know which table to change
                         // $_POST["colsToUpdate"]=array("PatientName","PhoneNumber","NextofKin","Allergies","FamilyConditions","Address");//So we know which table to change
                     }
                 ?>        
-    <?php endif;?>    
+    </table>   
+    <?php endif;?> 
     <!-- Patient tb -->
 
          <?php 
@@ -169,10 +171,10 @@
             }
          ?>  
 <a href="review_prescriptions.php">Unapproved Prescriptions</a>             
-<script>
+<!-- <script>
     $(document).ready(function(){
         $('.theTb').paging({limit:5});
     })
-</script>
+</script> -->
 </body>
 </html>

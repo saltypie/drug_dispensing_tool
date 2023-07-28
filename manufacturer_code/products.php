@@ -12,14 +12,14 @@
             }
             $sql=substr($sql, 0, -1);
             $sql.=' WHERE '.$_POST["criteria"].'="'.$_POST["whatToUpdate"]."\"";
-            mysqli_query($conn,$sql) or die(mysqli_error($conn));
-            // header("Refresh:0;url=products.php");
             // echo($sql);
+            mysqli_query($conn,$sql) or die(mysqli_error($conn)."<br><a href='products.php'>Go Back</a>");
+            // header("Refresh:0;url=products.php");
         }
         if(isset($_POST) and isset($_POST["whatToDelete"])){            
             $sql="DELETE FROM ".$_POST["tableToUpdate"]." WHERE DrugCode=\"".$_POST["whatToDelete"]."\"";
             echo $sql;
-            mysqli_query($conn,$sql) or die(mysqli_error($conn));
+            mysqli_query($conn,$sql) or die(mysqli_error($conn)."<br><a href='products.php'>Go Back</a>");
             header("Refresh:0; url=products.php");
         }
         // header("Location: select_copy.php");
@@ -59,12 +59,14 @@
             border: 2px solid black;
             width: 10%;
             text-align: center;
+            background-color: lightblue;
+
         }
 
 
         tbody {
             overflow-y: scroll;
-            height: 100px;
+            /* height: 100px; */
             border: 2px solid black;
         }
     </style>
@@ -83,9 +85,9 @@
             <tr>
             <th> DrugName </th>
             <th> Quantity </th>
-            <th>Manufacturer</th>
             <th>Formula</th>
             <th>DrugType</th>
+            <th>Manufacturer</th>
             <th>Update</th>
             <th>Delete</th>
             </tr>
@@ -98,18 +100,18 @@
                     // $result_array=$result->fetch_assoc();
                     while($result_array = $result->fetch_assoc())    {
                         if (!$result) {
-                            die("Invalid Query".$conn->error);
+                            die("Invalid Query".$conn->error."<br><a href='products.php'>Go Back</a>");
                         }
                         // "<td>".$result_array["Password"]."</td>".
                         echo(
                             "<tr><form action=\"\" method=\"post\">".
                             '<td><input type="text" name="DrugName" value="'.$result_array["DrugName"].'"></td>'.
                             '<td><input type="text" name="Quantity" value="'.$result_array["Quantity"].'"></td>'.
-                            '<td><input type="text" name="Manufacturer" value="'.$result_array["Manufacturer"].'"></td>'.
                             '<td><input type="text" name="Formula" value="'.$result_array["Formula"].'"></td>'.
-                            '<td><input type="text" name="DrugCode" value="'.$result_array["DrugType"].'"></td>'.
+                            '<td><input type="text" name="DrugType" value="'.$result_array["DrugType"].'"></td>'.
+                            '<td>'.$result_array["Manufacturer"].'</td>'.
                             '<td style="display: none"><input type="text" name="tableToUpdate" value="drugs"></td>'.
-                            '<td style="display: none"><input type="text" name="colsToUpdate" value="DrugName,Quantity,Manufacturer,Formula,DrugCode"></td>'.
+                            '<td style="display: none"><input type="text" name="colsToUpdate" value="DrugName,Quantity,Formula,DrugType"></td>'.
                             '<td style="display: none"><input type="text" name="criteria" value="DrugCode"></td>'.                    
                             "<td><button type=\"submit\" onclick='success()' name=\"whatToUpdate\"class=\"button\" value=".$result_array["DrugCode"].">Update</button></td>".
                             "<td><button type=\"submit\" name=\"whatToDelete\"class=\"button\" value=".$result_array["DrugCode"].">Delete</button></td>".

@@ -17,7 +17,7 @@
             // echo($sql);
         }
         if(isset($_GET) and isset($_GET["suredelete"]) and $_GET["suredelete"]=="true"){  
-            $sql="UPDATE patient SET Deactivated='true' WHERE PtientSSN='".$_SESSION["SSN"]."';";
+            $sql="UPDATE doctor SET Deactivated='true' WHERE DoctorSSN='".$_SESSION["SSN"]."';";
             mysqli_query($conn,$sql) or die(mysqli_error($conn));            
         }
         // header("Location: select_copy.php");
@@ -43,7 +43,9 @@
             width: 70%;
             background-color: lightblue !important;
         }
-
+        .suredelete{
+            color:black;
+        }
         thead, tbody {
             display: block;
             border: 2px solid black;
@@ -77,18 +79,16 @@
     <!-- tb -->
     <?php if(isset($_POST) and !isset($_POST["whoToDelete"])): ?>  
         <div class="centerholder">
-            <h2>Profile: </h2>
+            <h2><?php echo$_SESSION["Name"];?>'s Profile </h2>
         </div>
-        <div class="patientTb centerholder">
+        <div class="DoctorTb centerholder">
             <table class="theTb" id="theTb">
                 <tr>
                 <th> SSN </th>
-                <th> Name </th>
-                <th> Telephone </th>
+                <th>Hospital</th>
+                <th>Phone</th>
                 <th>Email</th>
-                <th>Next of Kin</th>
-                <th>Allergies</th>
-                <th>Family Conditions</th>
+
                 <th>Update</th>
                 <th>Disable</th>
 
@@ -97,7 +97,7 @@
         
                     <?php
                         require_once("../connection.php");
-                        $slctn="SELECT * FROM patient WHERE PatientSSN='".$_SESSION["SSN"]."';";
+                        $slctn="SELECT * FROM Doctor WHERE DoctorSSN='".$_SESSION["SSN"]."';";
                         $result=$conn->query($slctn);
                         // $result_array=$result->fetch_assoc();
                         while($result_array = $result->fetch_assoc())    {
@@ -107,24 +107,18 @@
                             // "<td>".$result_array["Password"]."</td>".
                             echo(
                                 "<tr><form action=\"\" method=\"post\">".
-                                '<td>'.$result_array["PatientSSN"].'</td>'.
-                                '<td><input type="text" name="PatientName" value="'.$result_array["PatientName"].'"></td>'.
-                                '<td><input type="text" name="PhoneNumber" value="'.$result_array["PhoneNumber"].'"></td>'.
+                                '<td>'.$result_array["DoctorSSN"].'</td>'.
+                                '<td><input type="text" name="Hospital" value="'.$result_array["Hospital"].'"></td>'.
+                                '<td><input type="text" name="Phone" value="'.$result_array["Phone"].'"></td>'.
                                 '<td><input type="text" name="Email" value="'.$result_array["Email"].'"></td>'.
-                                '<td><input type="text" name="NextofKin" value="'.$result_array["NextofKin"].'"></td>'.
-                                '<td><input type="text" name="Allergies" value="'.$result_array["Allergies"].'"></td>'.
-                                '<td><input type="text" name="FamilyConditions" value="'.$result_array["FamilyConditions"].'"></td>'.
-                                '<td style="display: none"><input type="text" name="tableToUpdate" value="patient"></td>'.
-                                '<td style="display: none"><input type="text" name="colsToUpdate" value="PatientName,PhoneNumber,Email,NextofKin,Allergies,FamilyConditions"></td>'.
-                                '<td style="display: none"><input type="text" name="criteria" value="PatientSSN"></td>'.                    
-                                "<td><button type=\"submit\" onclick='success()' name=\"whoToUpdate\"class=\"button\" value=".$result_array["PatientSSN"].">Update</button></td>".
-                                "<td><button type=\"submit\" name=\"whoToDelete\"class=\"button\" value=".$result_array["PatientSSN"].">Disable</button></td>".
+                                '<td style="display: none"><input type="text" name="tableToUpdate" value="doctor"></td>'.
+                                '<td style="display: none"><input type="text" name="colsToUpdate" value="Hospital,Phone,Email"></td>'.
+                                '<td style="display: none"><input type="text" name="criteria" value="DoctorSSN"></td>'.                    
+                                "<td><button type=\"submit\" onclick='success()' name=\"whoToUpdate\"class=\"button\" value=".$result_array["DoctorSSN"].">Update</button></td>".
+                                "<td><button type=\"submit\" name=\"whoToDelete\"class=\"button\" value=".$result_array["DoctorSSN"].">Disable</button></td>".
                                 "</form><tr>"
                             );
-                            // $_POST["tableToUpdate"]="patient";//So we know which table to change
-                            // $_POST["colsToUpdate"]=array("PatientName","PhoneNumber","NextofKin","Allergies","FamilyConditions","Address");//So we know which table to change
                         }
-                        // "<td><a href=\"Update\">Update</a></td>"
         
                     ?>        
             </table>
@@ -135,17 +129,14 @@
             <p>Are You Sure</p>
             <form action="" method="get">
                 <div class="centerholder">
-                    <button name="suredelete" value="true">Yes</button>
-                    <button name="suredelete" value="false">No</button>
+                    <button class="suredelete"name="suredelete" value="true">Yes</button>
+                    <button class="suredelete" name="suredelete" value="false">No</button>
                 </div>
             </form>
         </div>
     <?php endif;?>
    
 <script>
-    // $(document).ready(function(){
-    //     $('.theTb').paging({limit:5});
-    // })
     function success(){
         alert("Successfully Updated")
     }

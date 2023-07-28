@@ -1,7 +1,7 @@
 <?php
     if(isset($_POST['logout']) and $_POST['logout']=="true"){
         session_destroy();
-        header("Location: ../landing.php");
+        header("Location: ../Homepage.html");
     } 
 ?>
 <!DOCTYPE html>
@@ -58,7 +58,7 @@
                     '<nav class="navbar navbar-default">
                     <div class="container-fluid">
                         <div class="navbar-header">
-                        <a class="navbar-brand" href="http://localhost/WORK/drug_dispensing_tool/landing.php"><img src="../images/logo-final.png" alt="Logo" class="the-logo"></a>
+                        <a class="navbar-brand" href="http://localhost/WORK/drug_dispensing_tool/Homepage.html"><img src="../images/logo-final.png" alt="Logo" class="the-logo"></a>
                         </div>
                         <div class="options-container dropdown navbar-nav">
                             <p class="option-title">'.$session_vars["role"].' ⌄</p>
@@ -78,7 +78,7 @@
                     '<nav class="navbar navbar-default">
                     <div class="container-fluid">
                         <div class="navbar-header">
-                        <a class="navbar-brand" href="http://localhost/WORK/drug_dispensing_tool/landing.php"><img src="../images/logo-final.png" alt="Logo" class="the-logo"></a>
+                        <a class="navbar-brand" href="http://localhost/WORK/drug_dispensing_tool/Homepage.html"><img src="../images/logo-final.png" alt="Logo" class="the-logo"></a>
                         </div>
                         <div class="options-container dropdown navbar-nav">
                             <p class="option-title">'.$session_vars["Name"].' ⌄</p>
@@ -98,12 +98,12 @@
                     '<nav class="navbar navbar-default">
                     <div class="container-fluid">
                         <div class="navbar-header">
-                        <a class="navbar-brand" href="http://localhost/WORK/drug_dispensing_tool/landing.php"><img src="../images/logo-final.png" alt="Logo" class="the-logo"></a>
+                        <a class="navbar-brand" href="http://localhost/WORK/drug_dispensing_tool/Homepage.html"><img src="../images/logo-final.png" alt="Logo" class="the-logo"></a>
                         </div>
                         <div class="options-container dropdown navbar-nav">
                             <p class="option-title">'.$session_vars["Name"].' ⌄</p>
                             <div class="options">
-                                <a href="doc_profile.php">View Profile</a><br>
+                                <a href="doctor_profile.php">View Profile</a><br>
                                 <a href="prescribe.php">Prescribe</a><br>
                                 <form action="" method="post"><button class="nav-btns" type="submit" name="logout" value="true">Logout</button></form>
                             </div>
@@ -112,13 +112,50 @@
                     </nav> '
                 );
             }
-
+            if($session_vars['role']=="admin"){
+                echo(
+                    '<nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                        <a class="navbar-brand" href="http://localhost/WORK/drug_dispensing_tool/Homepage.html"><img src="../images/admin-logo-1.gif" alt="Logo" class="admin-logo"></a>
+                        </div>
+                        <div class="options-container dropdown navbar-nav">
+                            <p class="option-title">'.$session_vars["Username"].' ⌄</p>
+                            <div class="options">
+                                <a href="signup_admin.php">Registration</a><br>
+                                
+                                <form action="" method="post"><button class="nav-btns" type="submit" name="logout" value="true">Logout</button></form>
+                            </div>
+                        </div>
+                    </div>
+                    </nav> '
+                );
+            }
+            if($session_vars['role']=="Patient"){
+                echo(
+                    '<nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                        <a class="navbar-brand" href="http://localhost/WORK/drug_dispensing_tool/Homepage.html"><img src="../images/logo-final.png" alt="Logo" class="admin-logo"></a>
+                        </div>
+                        <div class="options-container dropdown navbar-nav">
+                            <p class="option-title">'.$session_vars["Name"].' ⌄</p>
+                            <div class="options">
+                                <a href="patient_profile.php">Profile</a>
+                                <form action="" method="post"><button class="nav-btns" type="submit" name="logout" value="true">Logout</button></form>
+                            </div>
+                        </div>
+                    </div>
+                    </nav> '
+                );
+            }
+            
 
             // echo(
             //     '<nav class="navbar navbar-default">
             //     <div class="container-fluid">
             //         <div class="navbar-header">
-            //         <a class="navbar-brand" href="http://localhost/WORK/drug_dispensing_tool/landing.php"><img src="../images/logo-final.png" alt="Logo" class="the-logo"></a>
+            //         <a class="navbar-brand" href="http://localhost/WORK/drug_dispensing_tool/Homepage.html"><img src="../images/logo-final.png" alt="Logo" class="the-logo"></a>
             //         </div>
             //         <ul class="nav navbar-nav">
                 

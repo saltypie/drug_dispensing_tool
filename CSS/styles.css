@@ -117,3 +117,10 @@
   align-items: center;
   justify-content: center;
 }
+.login-logo{
+  height: 5vh;
+}
+.admin-logo{
+  height: 70px!important;
+  width: 70px;
+}

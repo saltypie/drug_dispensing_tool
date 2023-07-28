@@ -43,18 +43,30 @@
             <br>
             <div class="centerholder">
                 <form class="laform" action="" method="post"><!--Empty action will call the same file-->
+                    <div class="centerholder">
+                        <h4>Prescribe</h4>
+                    </div>
+                    <label>Patient SSN:</label><br><input type="text" name="PatientSSN" value="<?php echo $patient_ssn;?>"><br>
                     
-                    <label>Patient SSN:</label><input type="text" name="PatientSSN" value="<?php echo $patient_ssn;?>"><br>
                     
-                    
-                    <label>Illness:</label><input type="text" name="Illness"><br>
+                    <label>Illness:</label><br><input type="text" name="Illness"><br><br>
+
+                    <select name='PharmacyName'>
+                        <option>Choose Pharmacy</option>
+                        <?php 
+                            while($result_array=$pharmacy_result->fetch_assoc()){
+                                echo "<option name='PharmacyName' value='".$result_array["PharmacyName"]."'>".$result_array["PharmacyName"]."</option>";
+                            }
+                        ?>
+                    </select>
+
                     <?php 
                         // $_SESSION["SSN"]=1;
                         echo'<input type="text" name="DoctorSSN" value="'.$_SESSION["SSN"].'" style="display: none;">'
                     ?>
                     <input type="text" name="tablename" value="patientprescription" style="display: none;"><!--Which Table Are we inserting to-->
-                    <input type="text" name="columns" value="PatientSSN,Illness,DoctorSSN"style="display: none;"><!--A way of specifying the table columns corresponding to this form-->
-                    <button type="submit" name="submit_presc" class="btn btn-primary">Submit</button> 
+                    <input type="text" name="columns" value="PatientSSN,Illness,PharmacyName,DoctorSSN"style="display: none;"><!--A way of specifying the table columns corresponding to this form-->
+                    <br><br><button type="submit" name="submit_presc" class="btn btn-primary">Submit</button> 
                 </form>       
             </div>
         <?php endif;?>
@@ -64,7 +76,7 @@
             require("../insertions.php");
             if (isset($_POST['submit_presc'])) {
                 // print_r($_POST);
-                insertion(array_slice($_POST, 0, 5));     
+                insertion(array_slice($_POST, 0, 6));     
             }else{
             }
 
@@ -77,15 +89,11 @@
                 <label>How many drugs will you enter</label>
                 <input type="text" name="number_of_drugs"><br>
     
-                <select name='PharmacyName'>
-                    <option>Choose Pharmacy</option>
                     <?php 
-                        while($result_array=$pharmacy_result->fetch_assoc()){
-                            echo "<option value='".$result_array["PharmacyName"]."'><button type='submit' name='submit'>".$result_array["PharmacyName"]."</button></option>";
-                        }
+                        echo('<input type="text" hidden name="PharmacyName" value='.$_POST["PharmacyName"].'>');
                     ?>
-                </select><br>
-                        
+
+
                 <button type="submit" name="number_of_drugs_submit">Confirm</button>
             </form>
         </div>
@@ -95,10 +103,11 @@
     <!-- <form action="" method="post">
             <button type='submit' name='submit'>Confirm</button>
     </form> -->
-    <?php if(isset($_POST) and isset($_POST["number_of_drugs"])):?>
+    <?php if(isset($_POST) and isset($_POST["number_of_drugs"]) and !isset($_POST["drug_submit"])):?>
         <div class="centerholder">
             <form action="" method="post" class="laform">
                 <?php
+                    echo $_POST["PharmacyName"];
                     echo('<form action="" method="post">');
                     for($i=0;$i<$_POST["number_of_drugs"];$i++){
                             echo'<select name="DrugCode[]">';
@@ -106,7 +115,7 @@
         
                                 $slct_drug="SELECT pharmacydrug.DrugCode,pharmacydrug.PharmacyName ,drugs.DrugName FROM `pharmacydrug`,`drugs` WHERE pharmacydrug.DrugCode=drugs.DrugCode AND pharmacydrug.PharmacyName='".$_POST["PharmacyName"]."';";
                                 $drug_result=$conn->query($slct_drug);
-        
+                                echo $slct_drug;
                                 while($drugs_array=$drug_result->fetch_assoc()){
                                     echo("<option value='".$drugs_array["DrugCode"]."'>".$drugs_array["DrugName"]."</option>");
                                 }
@@ -132,6 +141,7 @@
         
         
         if (isset($_POST) and isset($_POST["drug_submit"])) {
+                // echo ("here last");
                 $slct_last_presc="SELECT PrescriptionID FROM `patientprescription` WHERE DoctorSSN='".$_SESSION["SSN"]."' ORDER BY PrescriptionID DESC LIMIT 1; ";
                 $lst_presc_result=$conn->query($slct_last_presc);
                 $prescID;
@@ -140,10 +150,11 @@
                 for($i=0;$i<$_POST["number_of_drugs"];$i++){
                     $drug_post_arr=array();
                     $drug_post_arr["PrescritionID"]=$prescID;
-                    $drug_post_arr["PharmacyName"]=$_POST["PharmacyName"];
+                    // $drug_post_arr["PharmacyName"]=$_POST["PharmacyName"];
+                    // echo "<br> Last ".$_POST["PharmacyName"];
                     $drug_post_arr["Dosage"]=$_POST["Dosage"][$i];
                     $drug_post_arr["DrugCode"]=$_POST["DrugCode"][$i];
-                    $drug_post_arr["columns"]="PrescriptionID,PharmacyName,Dosage,DrugCode";
+                    $drug_post_arr["columns"]="PrescriptionID,Dosage,DrugCode";
                     $drug_post_arr["tablename"]="prescriptiondrug";
                     insertion($drug_post_arr);     
                 }

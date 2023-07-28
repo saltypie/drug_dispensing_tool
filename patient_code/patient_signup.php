@@ -2,13 +2,14 @@
 require("../connection.php");
 require("../insertions.php");
 if (isset($_POST) and isset($_POST['submit'])) {
+        $_POST["Password"] = sha1($_POST["Password"]);   
         insertion($_POST);
         session_start();
         $_SESSION["Name"]=$_POST["PatientName"];
         $_SESSION["SSN"]=$_POST["PatientSSN"];
         $_SESSION["loggedin"]=true;
         $_SESSION["role"]="Patient";
-        header("Location:patient_profile.php");
+        header("Location:patient_home.php");
 }else{
     // echo"not set";
 }
@@ -37,10 +38,15 @@ if (isset($_POST) and isset($_POST['submit'])) {
             
             <!-- <div class="card hover-card shadowbox">
                 <div class="card-body shadowbox-body"> -->
-                    <div style="margin-top:6vh; margin-left: 5vw;" class="centerholder ">
+                    <div style="margin-left: 4vw" class="majordiv centerholder ">
                         <form class="laform" action="" method="post">
                             <div class="centerholder">
-                                <h4 style="margin-left:1.8vw; margin-top:0.000001vh;">SIGNUP PATIENT</h4><br>
+                                <a href="../Homepage.html">
+                                    <img class="login-logo" src="../images/logo-final.png" alt="">
+                                </a>
+                            </div>
+                            <div class="centerholder">
+                                <h4 style="margin-left:1.8vw; margin-top:0.000001vh;">PATIENT SIGNUP</h4><br>
                             </div><br>
                             <div class="centerholder">
                                 <div class="itsown">

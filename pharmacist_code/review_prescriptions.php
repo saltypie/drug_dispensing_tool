@@ -32,6 +32,7 @@
             background: white;
             border: 2px solid balck;
             width: 80vw;
+            height: auto;
         }
 
         thead, tbody {
@@ -47,12 +48,14 @@
             border: 2px solid black;
             width: 10%;
             text-align: center;
+            background-color: lightblue;
+
         }
 
 
         tbody {
             overflow-y: scroll;
-            height: 100px;
+            height: 250px;
             border: 2px solid black;
         }
         .centerholder{
@@ -216,16 +219,25 @@
                 // echo $sql_update;
                 $update_result=$conn->query($sql_update);
                 echo'
-                <div class="content-box-2">
-                    <h1> Successfully Approved</h1>
-                </div>';
+                <div class="majordiv centerholder">            
+                    <div class="content-box-2">
+                        <h1> Successfully Approved</h1>
+                        <div class="centerholder">
+                            <a style="color:white;" href="review_prescriptions.php">Go Back</a>
+                        </div>
+                    </div>
+                </div>
+                ';
                 unset($_POST);
                 unset($_GET);
-                header("Refresh:0;url=review_prescriptions.php");
+
             }
         ?>  
         <a href="previous_prescs.php">Prescription History</a>
               
+    </div>
+    <div class="centerholder">
+        
     </div>
     <!-- <form action="" method="post"><button type="submit" name="IDToUpdate" class="approve_drug_btn" value='.$_GET["IDToUpdate"].'>Confirm Approval</button></form> -->
     <script>

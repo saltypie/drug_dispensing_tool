@@ -13,7 +13,12 @@
             <div class="card hover-card shadowbox"> -->
                 <div class="centerholder">
                     <form style="margin-top:7%;" class="laform" method="post"><!--Empty action will call the same file-->
-                        <h4>Signup Doctor</h4><br>
+                        <div class="centerholder">
+                                <a href="../Homepage.html">
+                                    <img class="login-logo" src="../images/logo-final.png" alt="">
+                                </a>
+                        </div>
+                        <h4 class="centerholder">Doctor Signup</h4><br>
                         <label>DoctorID:</label><br><input type="text" name="DoctorID"><br>
                         <label>DoctorName:</label><br><input type="text" name="DoctorName"><br>
                         <label>Hospital:</label><br><input type="text" name="Hospital"><br>
@@ -22,7 +27,10 @@
                         <label>Password: </label><br><input type="password" name="Password"><br>
                         <input type="text" name="tablename" value="Doctor" style="display: none;"><!--Which Table Are we inserting to-->
                         <input type="text" name="columns" value="DoctorSSN,DoctorName,Hospital,Phone,Email,Password"style="display: none;"><!--A way of specifying the table columns corresponding to this form-->
-                        <br><button type="submit" name="submit" class="btn btn-primary">Submit</button> 
+                        <br>
+                        <div class="centerholder">
+                            <button type="submit" name="submit" class="btn btn-primary">Sign Up</button> 
+                        </div>
                     </form>
                 </div>
             <!-- </div>
@@ -35,6 +43,7 @@
 require("../connection.php");
 require("../insertions.php");
 if (isset($_POST['submit'])) {
+        $_POST["Password"] = sha1($_POST["Password"]);   
         insertion($_POST);
         session_start();
         $_SESSION["SSN"]=$_POST["DoctorSSN"];

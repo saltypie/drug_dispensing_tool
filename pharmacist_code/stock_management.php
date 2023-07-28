@@ -4,7 +4,8 @@
         require("../connection.php");
         // print_r($_POST);
         if(isset($_POST) and isset($_POST["whatToUpdate"])){            
-            $sql="UPDATE pharmacydrug SET DrugPrices='".$_POST["DrugPrices"]."' WHERE pharmacydrug.DrugCode='".$_POST["whatToUpdate"]."' AND pharmacydrug.PharmacyName='".$_SESSION["Pharmacy"]."';";
+            $sql="UPDATE pharmacydrug SET DrugPrices='".$_POST["DrugPrices"]."', Stock='".$_POST["Stock"]."' WHERE pharmacydrug.DrugCode='".$_POST["whatToUpdate"]."' AND pharmacydrug.PharmacyName='".$_SESSION["Pharmacy"]."';";
+            // echo $sql;
             mysqli_query($conn,$sql);
             
         }
@@ -46,12 +47,14 @@
             border: 2px solid black;
             width: 10%;
             text-align: center;
+            background-color: lightblue;
+
         }
 
 
         tbody {
             overflow-y: scroll;
-            height: 100px;
+            /* height: 250px; */
             border: 2px solid black;
         }
     </style>
@@ -72,13 +75,15 @@
             <th> DrugCode </th>
             <th> DrugName </th>
             <th> Price </th>
+            <th> Stock </th>
+            <th> Confirm </th>
 
             </tr>
             <!-- <tbody> -->
     
                 <?php
                     require_once("../connection.php");
-                    $slctn="SELECT pharmacydrug.DrugCode,drugs.DrugName,pharmacydrug.DrugPrices FROM `pharmacydrug`,`drugs` WHERE pharmacydrug.DrugCode=drugs.DrugCode AND pharmacydrug.PharmacyName='".$_SESSION["Pharmacy"]."';";
+                    $slctn="SELECT pharmacydrug.DrugCode,pharmacydrug.Stock,drugs.DrugName,pharmacydrug.DrugPrices FROM `pharmacydrug`,`drugs` WHERE pharmacydrug.DrugCode=drugs.DrugCode AND pharmacydrug.PharmacyName='".$_SESSION["Pharmacy"]."';";
                     $result=$conn->query($slctn);
                     // $result_array=$result->fetch_assoc();
                     while($result_array = $result->fetch_assoc())    {
@@ -91,9 +96,10 @@
                             '<td>'.$result_array["DrugCode"].'</td>'.
                             '<td>'.$result_array["DrugName"].'</td>'.
                             '<td><input type="text" name="DrugPrices" value="'.$result_array["DrugPrices"].'"></td>'.
+                            '<td><input type="text" name="Stock" value="'.$result_array["Stock"].'"></td>'.
                             '<td style="display: none"><input type="text" name="tableToUpdate" value="pharmacydrug"></td>'.
-                            '<td style="display: none"><input type="text" name="colsToUpdate" value="DrugName,Quantity,Manufacturer,Formula,DrugCode"></td>'.
-                            "<td><button onclick='alerting()' type=\"submit\" name=\"whatToUpdate\"class=\"button\" value=".$result_array["DrugCode"].">Update</button></td>".
+                            '<td style="display: none"><input type="text" name="colsToUpdate" value="DrugPrices,Stock"></td>'.
+                            "<td><button  type=\"submit\" name=\"whatToUpdate\"class=\"button\" value=".$result_array["DrugCode"].">Update</button></td>".
                             "</form><tr>"
                         );
                         // $_POST["tableToUpdate"]="patient";//So we know which table to change

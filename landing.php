@@ -13,7 +13,7 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                <a class="navbar-brand" href="http://localhost/WORK/drug_dispensing_tool/landing.php"><img src="images/logo-final.png" alt="Logo" class="the-logo"></a>
+                <a class="navbar-brand" href="http://localhost/WORK/drug_dispensing_tool/Homepage.html"><img src="images/logo-final.png" alt="Logo" class="the-logo"></a>
                 </div>
                 <ul class="nav navbar-nav">
 

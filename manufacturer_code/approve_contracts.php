@@ -3,7 +3,21 @@
         require_once("../connection.php");
         if(isset($_GET) AND isset($_GET["IDToUpdate"])){
             $sql_update="UPDATE contracts SET ApprovalStatus='approved' WHERE `ContractID`=".$_GET["IDToUpdate"];
-            echo $sql_update;
+            // echo $sql_update;
+
+            $sql1="SELECT PharmacyName FROM contracts WHERE CompanyName='".$_SESSION["Name"]."' AND ApprovalStatus='approved' AND  `ContractID`='".$_GET["IDToUpdate"]."';";
+            $result1=$conn->query($sql1);
+            while($pharm_names=$result1->fetch_assoc()){
+                //new code
+                $insert_arr=array();
+                $insert_arr["columns"]="DrugCode,PharmacyName,Stock";
+                $insert_arr["DrugCode"]=$_POST['DrugCode'];
+                $insert_arr["PharmacyName"]=$pharm_names["PharmacyName"];
+                $insert_arr["Stock"]=100;
+                $insert_arr["tablename"]="pharmacydrug";
+                insertion($insert_arr);
+            }
+
             $update_result=$conn->query($sql_update);
             echo'
             <div class="content-box-2">
@@ -13,8 +27,20 @@
             unset($_GET);
             header("Refresh:0;url=approve_contracts.php");
         }
+        if(isset($_GET) AND isset($_GET["IDToDisapprove"])){
+            $sql_update="UPDATE contracts SET ApprovalStatus='disapproved' WHERE `ContractID`=".$_GET["IDToDisapprove"];
+            echo $sql_update;
+            $update_result=$conn->query($sql_update);
+            echo'
+            <div class="content-box-2">
+                <h1> Successfully Disapproved</h1>
+                <a href="approve_contracts.php">Go back</a>
+            </div>';
+            unset($_POST);
+            unset($_GET);
+            // header("Refresh:0;url=approve_contracts.php");
+        }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,12 +75,13 @@
             border: 2px solid black;
             width: 10%;
             text-align: center;
+            background-color: lightblue;
         }
 
 
         tbody {
             overflow-y: scroll;
-            height: 100px;
+            /* height: 100px; */
             border: 2px solid black;
         }
         .centerholder{
@@ -95,7 +122,7 @@
 
 
     <div class="majordiv">
-        <?php if(!isset($_GET["IDToUpdate"])): ?>
+        <?php if(!isset($_GET["IDToUpdate"]) or !isset($_GET["IDToDisapprove"])): ?>
             <div class="all">
                 <div class="centerholder">
                     <h2>Contracts</h2>
@@ -108,11 +135,12 @@
                     <table class="theTb table" id="theTb">
                         <tr>
 
+                            <th>Contract ID</th>
                             <th>Pharmacy Name</th>
-                            <th>Company Name</th>
                             <th>Start Date</th>
                             <th>End Date</th>
                             <th>Begin Approval</th>
+                            <th>Disapprove</th>
                 
                         </tr>
                         <!-- <tbody> -->
@@ -134,7 +162,8 @@
                                             '<td>'.$result_array["PharmacyName"].'</td>'.
                                             '<td>'.$result_array["StartDate"].'</td>'.
                                             '<td>'.$result_array["EndDate"].'</td>'.
-                                            "<td><form method=\"get\"><button type=\"submit\" name=\"IDToUpdate\"class=\"button btn-blue\" value=".$result_array["ContractID"].">Begin Approval</button></form></td>"   
+                                            "<td><form method=\"get\"><button type=\"submit\" name=\"IDToUpdate\"class=\"button btn-blue\" value=".$result_array["ContractID"].">Begin Approval</button></form></td>".   
+                                            "<td><form method=\"get\"><button type=\"submit\" name=\"IDToDisapprove\"class=\"button btn-blue\" value=".$result_array["ContractID"].">Begin Disapproval</button></form></td>"   
                                             .'</tr>'                
                                         );
 
@@ -147,20 +176,7 @@
             </div>    
         <?php endif;?>
 
-        <?php
-
-            // if(isset($_GET) AND isset($_GET["IDToUpdate"])){
-            //     $sql_update="UPDATE contracts SET ApprovalStatus='approved WHERE `ContractID`=".$_GET["IDToUpdate"];
-            //     $update_result=$conn->query($sql_update);
-            //     echo'
-            //     <div class="content-box-2">
-            //         <h1> Successfully Approved</h1>
-            //     </div>';
-            //     unset($_POST);
-            //     unset($_GET);
-            //     header("Refresh:0;url=review_prescriptions.php");
-            // }
-        ?>            
+           
     </div>
     <!-- <form action="" method="post"><button type="submit" name="IDToUpdate" class="approve_drug_btn" value='.$_GET["IDToUpdate"].'>Confirm Approval</button></form> -->
     <script>

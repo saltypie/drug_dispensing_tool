@@ -8,24 +8,31 @@
     <link rel="stylesheet" type="text/css" href="../CSS/styles.css">
 </head>
 <body>
-    <div class="centerholder">
-        <form class="laform" action="" method= "POST">
+    <!-- <div class="majordiv centerholder"> -->
+        <div class="majordiv centerholder">
+            <form class="laform" action="" method= "POST">
                 <div class="centerholder">
-                    <h3>LOGIN</h3>
+                    <a href="../Homepage.html">
+                        <img class="login-logo" src="../images/logo-final.png" alt="">
+                    </a>
                 </div>
-                <?php if(isset($_GET['error'])){ ?>
-                        <p class="error"><?php echo $_GET['error'];?></p>
-                <?php } ?><!--previous 3 lines syntax revise them-->
-                <label>DoctorEmail</label><br>
-                <input type="text" name="Email" placeholder="Email" required><br>
-                <label>Password</label><br>
-                <input type="Password"name="Password"placeholder="Password" required><br><br>
-                <div class="centerholder">
-                    <br>
-                    <button type="submit">Login</button>   
-                </div>
-        </form>
-    </div>
+                    <div class="centerholder">
+                        <h3>LOGIN</h3>
+                    </div>
+                    <?php if(isset($_GET['error'])){ ?>
+                            <p class="error"><?php echo $_GET['error'];?></p>
+                    <?php } ?><!--previous 3 lines syntax revise them-->
+                    <label>DoctorEmail</label><br>
+                    <input type="text" name="Email" placeholder="Email" required><br><br>
+                    <label>Password</label><br>
+                    <input type="Password"name="Password"placeholder="Password" required><br><br>
+                    <div class="centerholder">
+                        <br>
+                        <button type="submit">Login</button>   
+                    </div>
+            </form>
+        </div>
+    <!-- </div> -->
 
 </body>
 </html>
@@ -36,6 +43,8 @@ include "../connection.php";
 if(isset($_POST['Email'])&&isset($_POST['Password'])){
     $Email =$_POST['Email'];
     $Password=$_POST['Password'];
+    $Password=sha1($Password);
+
     if(empty($Email)){
         echo("Email is required");
         exit();

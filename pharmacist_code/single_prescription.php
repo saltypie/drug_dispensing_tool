@@ -47,12 +47,14 @@
             border: 2px solid black;
             width: 10%;
             text-align: center;
+            background-color: lightblue;
+
         }
 
 
         tbody {
             overflow-y: scroll;
-            height: 100px;
+            /* height: 100px; */
             border: 2px solid black;
         }
         .centerholder{
@@ -124,7 +126,7 @@
                                     $result=$conn->query($slctn);
                                     while($result_array = $result->fetch_assoc())    {
                                         if (!$result) {
-                                            die("Invalid Query".$conn->error);
+                                            die("Invalid Query".$conn->error."<br><a href='single_prescription.php'>Go Back</a>");
                                         }                    
                                         
                                         echo(

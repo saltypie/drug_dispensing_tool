@@ -2,19 +2,25 @@
 <html>
     <head>
         <title>LOGIN</title>
-        <!-- <link rel="stylesheet" type="text/css" href="work.css"> -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../CSS/styles.css">
     </head>
     <body>
-        <div class="centerholder">            
+        <div class="majordiv centerholder">            
             <form class="laform" action="" method="post"><!--Link index to the login page post-->
+                <div class="centerholder">
+                    <a href="../Homepage.html">
+                        <img class="login-logo" src="../images/logo-final.png" alt="">
+                    </a>
+                </div>
                 <div class="centerholder">
                     <h2>LOGIN</h2>
                 </div>
                 <?php if(isset($_GET['error'])){ ?>
                         <p class="error"><?php echo $_GET['error'];?></p>
                 <?php } ?><!--previous 3 lines syntax revise them-->
-                <label>Username</label><br>
+                <label>Email</label><br>
                 <input type="Email" name="Email" placeholder="Email" required><br><br>
                 <label>Password</label><br>
                 <input type="Password"name="Password"placeholder="Password" required><br><br><br>
@@ -32,6 +38,8 @@ include "../connection.php";
 if(isset($_POST['Email'])&&isset($_POST['Email'])){
     $Email =$_POST['Email'];
     $Password=$_POST['Password'];
+    $Password=sha1($Password);
+
     if(empty($Email)){
         echo("Email is required");
         exit();
@@ -51,7 +59,7 @@ if(isset($_POST['Email'])&&isset($_POST['Email'])){
             $_SESSION['SSN']=$row['PatientSSN'];
             $_SESSION['Name']=$row['PatientName'];
             $_SESSION['logged_in']=true;
-            $_SESSION['role']="patient";
+            $_SESSION['role']="Patient";
             header("Location: patient_home.php");//How to redirect
             exit();
         }else{
